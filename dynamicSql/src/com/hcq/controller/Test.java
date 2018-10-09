@@ -22,6 +22,7 @@ public class Test {
 	  getClasses();
 	  String B="aaa";
 	  String A="A";
+	  String CCC="我又写了一个模块";
   }
   //脛拢潞媒虏茅脩炉
   public static void selectByLike() throws IOException{
