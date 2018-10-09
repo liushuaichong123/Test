@@ -21,6 +21,7 @@ public class Test {
   public static void main(String[] args) throws IOException {
 	  getClasses();
 	  String A="A";
+	  String CCC="我又写了一个模块";
   }
   //模糊查询
   public static void selectByLike() throws IOException{
