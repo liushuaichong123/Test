@@ -21,6 +21,7 @@ public class Test {
   public static void main(String[] args) throws IOException {
 	  getClasses();
 	  String B="aaa";
+	  String A="A";
   }
   //Ä£ºý²éÑ¯
   public static void selectByLike() throws IOException{
