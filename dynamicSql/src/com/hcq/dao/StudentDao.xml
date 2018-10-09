@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hcq.dao.StudentDao">
+    <!-- 推荐：将%%作为参数 -->
+   <select id="selectByLike" resultType="Student">
+      select * from student 
+      <where>
+          ${param1} like #{param2}
+      </where>
+    </select>
+<!--  不推荐：采用${参数名}
+ <select id="selectByLike" parameterType="java.lang.String" resultType="Student">
+       select * from student
+      <where>
+         sname like "%${value}%"
+      </where> 
+  </select> -->
+<!-- 拼接:不推荐 -->
+<!--  <select id="selectByLike" parameterType="java.lang.String" resultType="Student">
+       select * from student
+      <where>
+         sname like "%"#{value}"%"
+      </where> 
+  </select> -->
+ <!-- 存储过程 -->
+  <select id="getSname" statementType="CALLABLE" parameterMap="parameMap">
+    call my_procedure(?,?);
+  </select>
+  <parameterMap type="Student" id="parameMap">
+     <parameter property="sid" mode="IN"/>
+     <parameter property="sname" mode="OUT" jdbcType="VARCHAR"/>
+  </parameterMap>
+  
+  
+  
+  <select id="getOne" statementType="CALLABLE" parameterType="int" resultType="Student">
+         call getOne(#{sid});
+  </select>
+</mapper>

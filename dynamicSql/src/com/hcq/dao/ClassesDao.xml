@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hcq.dao.ClassesDao">
+  <!-- 动态sql：foreach -->
+   <insert id="cascadeInsert"  parameterType="java.util.List">
+     insert into classes values
+     <foreach collection="list" item="cla" separator="," >
+       (#{cla.cname})
+     </foreach>
+   </insert>
+   <!-- 遍历Map集合:各种条件查询 -->
+   <select id="getClasses" parameterType="java.util.Map" resultType="Classes">
+      select * from classes
+      <where>
+         <if test="map!=null">
+         <foreach collection="map.entrySet()" index="key" item="value" separator="and">
+            ${key}=#{value}
+         </foreach>
+         </if>
+      </where>
+   </select>
+   <!-- 添加班级: -->
+   <insert id="saveClasses" parameterType="Classes">
+        insert into classes values(#{cid},#{cname});
+   </insert>
+   <!-- 修改班级信息 -->
+<!--    <update id="updateClasses"  parameterType="Classes">
+      update classes set
+   </update> -->
+   <!-- 删除班级 -->
+   <delete id="deleteClasses" parameterType="int">
+      delete from classes where cid=#{id} 
+   </delete>
+   
+</mapper>
