@@ -20,6 +20,7 @@ import com.hcq.entity.Student;
 public class Test {
   public static void main(String[] args) throws IOException {
 	  getClasses();
+	  String A="A";
   }
   //Ä£ºý²éÑ¯
   public static void selectByLike() throws IOException{
