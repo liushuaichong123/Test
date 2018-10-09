@@ -20,15 +20,16 @@ import com.hcq.entity.Student;
 public class Test {
   public static void main(String[] args) throws IOException {
 	  getClasses();
+	  String B="aaa";
   }
-  //Ä£ºý²éÑ¯
+  //Ã„Â£ÂºÃ½Â²Ã©Ã‘Â¯
   public static void selectByLike() throws IOException{
 	   String xmlpath="mybatisConfig.xml";
 		Reader xml=Resources.getResourceAsReader(xmlpath);
 		SqlSessionFactory factory=new SqlSessionFactoryBuilder().build(xml);
 	    SqlSession session=factory.openSession();
 	    StudentDao dao=session.getMapper(StudentDao.class);
-	    List<Student> list=dao.selectByLike("sname","%ºÎ%");
+	    List<Student> list=dao.selectByLike("sname","%ÂºÃŽ%");
 	    System.out.println(list);
 	    session.close(); 
   }
@@ -59,7 +60,7 @@ public class Test {
         dao.cascadeInsert(list);
 	    session.close(); 
   }
-  ///Ìõ¼þ²éÑ¯
+  ///ÃŒÃµÂ¼Ã¾Â²Ã©Ã‘Â¯
   public static void getClasses() throws IOException{
 		String xmlpath="mybatisConfig.xml";
 		Reader xml=Resources.getResourceAsReader(xmlpath);
